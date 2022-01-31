@@ -2,7 +2,7 @@
 This was my submission to a Kaggle competition on identify glomeruli in human kidney tissue images.
 
 ## Challenges
-One of the main challenges for this task was memory management! For one each WSI comes in a TIFF format with a size of 400 MB to 5 GB, compressed. Once you read each file they take up 6 - 11 GB of memory on the RAM. The best solution is to take random crops of the image on the fly and send it to the GPU. However given how large the files are, this approach severly bottlenecks the GPU during training. Also loading entire images onto the GPU leaves very little room for the classifier and the optimizer. To overcome these two issues, you need a different solution. The better practical solution is to create overlapping cuts of the images. This has the additional benefit of more randomization during training. 
+One of the main challenges for this task was memory management! For one each WSI comes in a TIFF format with a size of 400 MB to 5 GB, compressed. Once you read each file they take up 6 - 11 GB of memory on the RAM. One solution is to take send entire images to the GPU on the fly for training. However given the size of the images, this approach severly bottlenecks the GPU during training because reading and decompressing will be slow. Also loading entire images onto the GPU leaves very little room for the classifier and the optimizer. To overcome these two issues, you need a different solution. The better practical solution is to create overlapping cuts of the images. This has the additional benefit of more randomization during training. 
 
 Coming SoOn!
 <p align="center">
